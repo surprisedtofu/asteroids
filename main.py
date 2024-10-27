@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from asteroid import *
 from asteroidfield import *
 from player import *
@@ -35,6 +36,10 @@ def main():
 
         for item in updatable:
             item.update(dt)
+        for item in asteroid_group:
+            if player.is_collision(item):
+                print("Game over!")
+                sys.exit()
         for item in drawable:
             item.draw(screen)
 
